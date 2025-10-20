@@ -20,9 +20,6 @@ public class OAuth2Attribute {
     private String provider;
 
     public static OAuth2Attribute of(String provider, String attributeKey, Map<String, Object> attributes){
-        log.info(provider);
-        log.info(attributeKey);
-        log.info(attributes.toString());
         switch (provider){
             case "google":
                 return ofGoogle(provider, attributeKey, attributes);
