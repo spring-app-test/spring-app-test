@@ -24,5 +24,6 @@ naverLoginButton.addEventListener("click", (e) => {
 // 구글 로그인
 const googleLoginButton = document.getElementById("google-login");
 googleLoginButton.addEventListener("click", (e) => {
+    e.preventDefault();
     window.location.href = "http://15.164.169.78/oauth2/authorization/google";
 });
