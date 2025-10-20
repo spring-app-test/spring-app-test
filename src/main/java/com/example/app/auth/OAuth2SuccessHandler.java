@@ -27,7 +27,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         boolean isExist = oAuth2User.getAttribute("exist");
         String role = oAuth2User.getAuthorities().stream().findFirst().orElseThrow(IllegalAccessError::new).getAuthority();
         String path = null;
-
+        log.info("존재: {}", isExist);
         if(isExist){
             jwtTokenProvider.createAccessToken(email, provider);
             jwtTokenProvider.createRefreshToken(email, provider);
@@ -42,7 +42,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
             response.addCookie(roleCookie);
 
-            path = "/member/sns/join?provider=" + provider;
+            path = "/member/sns/join";
         }
 
         Cookie providerCookie = new Cookie("provider", provider);

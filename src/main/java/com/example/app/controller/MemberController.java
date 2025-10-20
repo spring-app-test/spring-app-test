@@ -67,7 +67,7 @@ public class MemberController {
         jwtTokenProvider.createAccessToken(memberDTO.getSnsEmail(), provider);
         jwtTokenProvider.createRefreshToken(memberDTO.getSnsEmail(), provider);
 
-        return new RedirectView("http://15.164.169.78/post/list/1");
+        return new RedirectView("/post/list/1");
     }
 
     @PostMapping("join")

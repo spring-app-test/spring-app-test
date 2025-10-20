@@ -12,7 +12,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://52.78.17.29:5432/app?serverTimezone=Asia/Seoul
+    url: jdbc:postgresql://3.36.70.105:5432/app?serverTimezone=Asia/Seoul
     username: spring
     password: 1234
   session:
@@ -21,7 +21,7 @@ spring:
       flush-mode: immediate
   data:
     redis:
-      host: 52.78.17.29
+      host: 3.36.70.105
       port: 6379
   cache:
     type: redis
