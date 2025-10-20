@@ -1,0 +1,39 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    if: github.repository == 'spring-app-test/spring-app-test'
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Debug EC2_HOST
+      run: echo "EC2_HOST is ${{ secrets.EC2_HOST }}"
+
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+    - name: Copy project to EC2
+      run: |
+        rsync -avz -e "ssh -i ~/.ssh/id_rsa" . ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ubuntu/app
+    - name: Build & Run Docker on EC2
+      run: |
+        ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          cd /home/ubuntu/app
+          docker stop app || true
+          docker rm app || true
+          docker rmi app || true
+          docker build -t app .
+          docker run -d -p 80:10000 --name app app
+    - name: Clean up dangling images
+      run: docker image prune -f
