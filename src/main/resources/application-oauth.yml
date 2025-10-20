@@ -6,7 +6,7 @@ spring:
           google:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_CLIENT_SECRET}
-            redirect-uri: http://ec2-15-164-169-78.ap-northeast-2.compute.amazonaws.com/login/oauth2/code/google
+            redirect-uri: http://ec2-43-200-4-183.ap-northeast-2.compute.amazonaws.com/login/oauth2/code/google
             authorization-grant-type: authorization_code
             scope: profile, email
 
