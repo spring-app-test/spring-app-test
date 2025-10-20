@@ -2,6 +2,9 @@
 FROM eclipse-temurin:17-jdk AS build
 
 # 빌드 시 필요한 정보 받아오기
+ARG EC2_HOST
+ENV EC2_HOST=${EC2_HOST}
+
 ARG JWT_SECRET
 ENV JWT_SECRET=${JWT_SECRET}
 
