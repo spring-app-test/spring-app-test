@@ -12,17 +12,17 @@ button.addEventListener('click', async () => {
 // 카카오 로그인
 const kakaoLoginButton = document.getElementById("kakao-login");
 kakaoLoginButton.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:10000/oauth2/authorization/kakao";
+    window.location.href = "http://127.0.0.1/oauth2/authorization/kakao";
 });
 
 // 네이버 로그인
 const naverLoginButton = document.getElementById("naver-login");
 naverLoginButton.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:10000/oauth2/authorization/naver";
+    window.location.href = "http://127.0.0.1/oauth2/authorization/naver";
 });
 
 // 구글 로그인
 const googleLoginButton = document.getElementById("google-login");
 googleLoginButton.addEventListener("click", (e) => {
-    window.location.href = "http://localhost:10000/oauth2/authorization/google";
+    window.location.href = "http://127.0.0.1/oauth2/authorization/google";
 });
