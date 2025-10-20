@@ -79,4 +79,8 @@ jobs:
             -e JWT_SECRET=$JWT_SECRET \
             app
     - name: Clean up dangling images
-      run: docker image prune -f
+      if: success()
+      run: |
+        ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          docker image prune -f
+          docker container prune -f
