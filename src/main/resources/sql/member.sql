@@ -15,6 +15,7 @@ create table tbl_member(
     updated_date timestamp default now()
 );
 
+select * from tbl_member;
 
 
 
