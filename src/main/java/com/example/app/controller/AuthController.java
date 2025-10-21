@@ -98,7 +98,7 @@ public class AuthController implements AuthControllerDocs{
 
         Cookie deleteAccessCookie = new Cookie("accessToken", null);
         deleteAccessCookie.setHttpOnly(true);
-        deleteAccessCookie.setSecure(true);
+        deleteAccessCookie.setSecure(false);
         deleteAccessCookie.setPath("/");
         deleteAccessCookie.setMaxAge(0);
 
@@ -106,7 +106,7 @@ public class AuthController implements AuthControllerDocs{
 
         Cookie deleteRefreshCookie = new Cookie("refreshToken", null);
         deleteRefreshCookie.setHttpOnly(true);
-        deleteRefreshCookie.setSecure(true);
+        deleteRefreshCookie.setSecure(false);
         deleteRefreshCookie.setPath("/");
         deleteRefreshCookie.setMaxAge(0);
 
@@ -114,7 +114,7 @@ public class AuthController implements AuthControllerDocs{
 
         Cookie memberEmailCookie = new Cookie("memberEmail", null);
         memberEmailCookie.setHttpOnly(true);
-        memberEmailCookie.setSecure(true);
+        memberEmailCookie.setSecure(false);
         memberEmailCookie.setPath("/");
         memberEmailCookie.setMaxAge(0);
 
@@ -123,7 +123,7 @@ public class AuthController implements AuthControllerDocs{
 
         Cookie roleCookie = new Cookie("role", null);
         roleCookie.setHttpOnly(true);
-        roleCookie.setSecure(true);
+        roleCookie.setSecure(false);
         roleCookie.setPath("/");
         roleCookie.setMaxAge(0);
 
