@@ -49,7 +49,7 @@ public class AuthController implements AuthControllerDocs{
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
             String accessToken = jwtTokenProvider.createAccessToken(((CustomUserDetails) authentication.getPrincipal()).getMemberEmail());
-            String refreshToken = jwtTokenProvider.createRefreshToken(((CustomUserDetails) authentication.getPrincipal()).getMemberName());
+            String refreshToken = jwtTokenProvider.createRefreshToken(((CustomUserDetails) authentication.getPrincipal()).getMemberEmail());
 
             Map<String, String> tokens = new HashMap<>();
             tokens.put("accessToken", accessToken);

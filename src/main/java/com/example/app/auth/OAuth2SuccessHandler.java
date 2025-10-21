@@ -34,6 +34,14 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
             path = "/post/list/1";
         }else{
+            Cookie memberEmailCookie = new Cookie("memberEmail", email);
+            memberEmailCookie.setHttpOnly(true);     // JS에서 접근 불가 (XSS 방지)
+            memberEmailCookie.setSecure(false);       // HTTPS 환경에서만 전송
+            memberEmailCookie.setPath("/");          // 모든 경로에 쿠키 적용
+            memberEmailCookie.setMaxAge(60 * 60);    // 1시간
+
+            response.addCookie(memberEmailCookie);
+
             Cookie roleCookie = new Cookie("role", role);
             roleCookie.setHttpOnly(true);     // JS에서 접근 불가 (XSS 방지)
             roleCookie.setSecure(false);       // HTTPS 환경에서만 전송
