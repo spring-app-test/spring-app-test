@@ -130,6 +130,14 @@ public class AuthController implements AuthControllerDocs{
 
         response.addCookie(roleCookie);
 
+        Cookie providerCookie = new Cookie("provider", null);
+        providerCookie.setHttpOnly(true);
+        providerCookie.setSecure(false);
+        providerCookie.setPath("/");
+        providerCookie.setMaxAge(0);
+
+        response.addCookie(providerCookie);
+
         redisTemplate.delete("member::" + username);
         Set<String> keys = redisTemplate.keys("posts::post_*");
         if (keys != null && !keys.isEmpty()) {
