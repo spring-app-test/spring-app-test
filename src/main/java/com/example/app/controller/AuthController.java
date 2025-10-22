@@ -27,6 +27,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 @Slf4j
 @RestController
@@ -130,6 +131,10 @@ public class AuthController implements AuthControllerDocs{
         response.addCookie(roleCookie);
 
         redisTemplate.delete("member::" + username);
+        Set<String> keys = redisTemplate.keys("posts::post_*");
+        if (keys != null && !keys.isEmpty()) {
+            redisTemplate.delete(keys);
+        }
     }
 
 //    리프레시 토큰으로 엑세스 토큰 발급
