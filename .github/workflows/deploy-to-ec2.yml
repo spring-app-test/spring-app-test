@@ -47,7 +47,7 @@ jobs:
         mkdir -p ~/.ssh
         echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+        ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
     - name: Copy project to EC2
       run: |
         rsync -avz -e "ssh -i ~/.ssh/id_rsa" . ${{ secrets.EC2_USER }}@$HOST:/home/ubuntu/app
